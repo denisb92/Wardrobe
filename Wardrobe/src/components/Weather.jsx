@@ -7,9 +7,6 @@ export default function Weather(){
     let conditionClass = "h-fit w-100 border-black border-2";
     conditionClass += (condition === "Clear") ? " bg-yellow-200" : " bg-blue-300";
 
-    
-   
-    console.log(temp);
     return(
        <section className= {conditionClass} >
             <div className="flex justify-center">

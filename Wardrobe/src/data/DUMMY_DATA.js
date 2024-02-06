@@ -1,7 +1,7 @@
 export const DUMMY_DATA = [
     
     {
-        id: 1,
+        id: 0,
         title: "Green Shirt",
         type: "shirt",
         color: "green",
@@ -11,7 +11,7 @@ export const DUMMY_DATA = [
         description: "Green Shirt from Old Navy"
     },
     {
-        id: 2,
+        id: 1,
         title: "Fleece Sweater",
         type: "shirt",
         color: "blue",
@@ -21,7 +21,7 @@ export const DUMMY_DATA = [
         description: "Blue sweater from JCrew"
     },
     {
-        id: 3,
+        id: 2,
         title: "Chino Pants",
         type: "pants",
         color: "red",
@@ -31,7 +31,7 @@ export const DUMMY_DATA = [
         description: "Red Chino pants from aeropostole"
     },
     {
-        id: 4,
+        id: 3,
         title: "Chukka Shoes",
         type: "shoes",
         color: "brown",
@@ -41,7 +41,7 @@ export const DUMMY_DATA = [
         description: "Brown shoes from aeropostole"
     },
     {
-        id: 5,
+        id: 4,
         title: "Sneakers",
         type: "shoes",
         color: "white",
@@ -51,7 +51,7 @@ export const DUMMY_DATA = [
         description: "White nike sneakers"
     },
     {
-        id: 6,
+        id: 5,
         title: "Rain Jacket",
         type: "jacket",
         color: "yellow",
@@ -61,7 +61,7 @@ export const DUMMY_DATA = [
         description: "Yellow Rain Jacket"
     },
     {
-        id: 7,
+        id: 6,
         title: "Winter Jacket",
         type: "jacket",
         color: "gray",
@@ -71,7 +71,7 @@ export const DUMMY_DATA = [
         description: "Gray Winter Jacket"
     },
     {
-        id: 8,
+        id: 7,
         title: "Jeans",
         type: "pants",
         color: "blue",

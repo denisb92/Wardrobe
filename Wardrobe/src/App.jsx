@@ -15,7 +15,7 @@ function getWeatherInfo(){
     return new Promise((resolve) => {
       navigator.geolocation.getCurrentPosition((position) => {
         console.log(position);
-        const current = GetWeatherInfo(position.coords.latitude, position.coords.longitude);
+        //const current = GetWeatherInfo(position.coords.latitude, position.coords.longitude);
         //console.log(tempF);
         resolve(current);
         

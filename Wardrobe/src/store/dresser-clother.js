@@ -19,6 +19,19 @@ const dresserSlice = createSlice({
                 condition: 'Cloudy',
                 description: action.payload.description
             });
+        },
+        deleteItem(state, action)
+        {
+            state.clothesAmount--;
+            state.items = state.items.filter((item) =>
+                item.id !== action.payload.id
+            );
+
+            let id = 0;
+            state.items.forEach((item) => {
+                item.id = id;
+                id++;
+            })
         }
     }
 })
