@@ -26,25 +26,25 @@ export default function ItemsDetails(){
 
     return(
         <>
-        <div className='bg-white w-80 h-fit text-center font-serif font-bold flex-wrap grid border-2 border-black'>
-            <h1 className="text-3xl text-stone-400">Item</h1>
-            <p className='text-xl'>Name: </p>
-            <label className='text-blue-500'>{name}</label>
-            <p className='text-xl'>Type:</p>
-            <label className='text-blue-500'>{type}</label>
+        <h1 className="text-4xl font-serif font-bold py-2 text-center">Item</h1>
+        <div className='bg-gradient-to-tr from-stone-300 to-blue-400 w-80 h-fit text-center font-serif font-bold flex-wrap grid border-2 border-black shadow-2xl '>
+            <p className='text-2xl text-white'>Name: </p>
+            <label className='text-lg'>{name}</label>
+            <p className='text-2xl text-white'>Type:</p>
+            <label className='text-lg'>{type}</label>
 
-            <p className='text-xl'>Color: </p>
-            <label className="text-blue-500">{color}</label>
+            <p className='text-2xl text-white'>Color: </p>
+            <label className='text-lg'>{color}</label>
 
-            <p className='text-xl'>Temperature:</p>
-            <label className='text-blue-500'> {minTemp}° - {maxTemp}°</label>
-            <p className='text-xl'>Condition: </p>
-            <label className='text-blue-500'>{condition}</label>
-            <p>Description:</p>
-            <label className='text-blue-500'> {description}</label>
-            <div className='flex-wrap grid'>
-            <button onClick={editItem} className='py-4 text-green-400 hover:text-green-800' >Edit</button>
-            <button onClick={deleteItem}  className='text-red-400 hover:text-red-800'>Delete</button>
+            <p className='text-2xl text-white'>Temperature:</p>
+            <label className='text-lg'> {minTemp}° - {maxTemp}°</label>
+            <p className='text-2xl text-white'>Condition: </p>
+            <label className='text-lg'>{condition}</label>
+            <p className='text-2xl text-white'>Description:</p>
+            <label className='text-lg'> {description}</label>
+            <div className='py-4'>
+            <button onClick={editItem} className=' mx-4 bg-green-400 text-black w-20 hover:bg-green-800 border-2 border-black ' >Edit</button>
+            <button onClick={deleteItem}  className='mx-4 bg-red-400 hover:bg-red-800 w-20 border-2 border-black'>Delete</button>
             </div>    
         </div>
         

@@ -22,11 +22,11 @@ export default function ClothesItem({temp, condition, type})
         setClothesItem( newClothesItem );
     }
     return(
-        <section className="justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded bg-gradient-to-r from-white to-slate-300" >
+        <section className="justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded bg-gradient-to-tr from-stone-300 to-blue-400 shadow-2xl" >
             
-            <p>Item Name: {clothesItem.name}</p>
-            <p>Type: {clothesItem.type}</p>
-            <p>Color: {clothesItem.color}</p>
+            <p className="text-xl text-white">Name: <label className="text-black">{clothesItem.name} </label></p>
+            <p className="text-lg">Type: {clothesItem.type}</p>
+            <p className="text-lg">Color: {clothesItem.color}</p>
             
             <div className="flex items-start">
                 <button onClick={generateRandomClothes}  className="font-bold border-2 mx-10 w-24 h-8 bg-yellow-100 rounded border-black text-sm">Randomize</button>

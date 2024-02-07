@@ -5,12 +5,12 @@ export default function Weather(){
     const condition = useSelector(state => state.weather.condition);
   
     let conditionClass = "h-fit w-100 border-black border-2";
-    conditionClass += (condition === "Clear") ? " bg-yellow-200" : " bg-blue-300";
+    conditionClass += (condition === "Clear") ? " bg-gradient-to-r from-yellow-200 to-blue-100" : " bg-gradient-to-r from-blue-500 to-stone-300";
 
     return(
        <section className= {conditionClass} >
             <div className="flex justify-center">
-                <h1 className="text-stone-500 font-bold font-mono text-xl">Weather Info</h1>
+                <h1 className="text-stone-700 font-bold font-mono text-xl">Weather Info</h1>
             </div>
             <div className="grid justify-center my-2" >
                 <label className="font-bold font-serif">Temperature </label>

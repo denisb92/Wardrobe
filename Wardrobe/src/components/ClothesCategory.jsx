@@ -25,14 +25,14 @@ export default function ClothesCategory({clothesType})
             
         }
     }
-    return(     <section>
+    return(     <section className="py-2">
                 <button className={categoryStyle} onClick={toggleHide}>{clothesType} </button>
                 {showCategory && categoryItems.map((item) =>(
                   <section key={item.id} className="justify-items-start  font-semibold font-serif text-black bg-white px-2 my-2 grid border-black h-36 border-2 rounded bg-gradient-to-r from-white to-slate-300" >
             
-                  <p>Item Name: {item.name}</p>
-                  <p>Type: {item.type}</p>
-                  <p>Color: {item.color}</p>
+                <p className="text-xl">Name: {item.name}</p>
+                <p className="text-lg">Type: {item.type}</p>
+                <p className="text-lg">Color: {item.color}</p>
                   
                   <div className="flex items-start">
                       
