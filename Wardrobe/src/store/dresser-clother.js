@@ -11,14 +11,23 @@ const dresserSlice = createSlice({
             state.clothesAmount++;
             state.items.push({
                 id: state.items.length + 1,
-                title:  action.payload.title,
-                type: action.payload.types,
-                color: action.payload.colors,
+                name:  action.payload.name,
+                type: action.payload.type,
+                color: action.payload.color,
                 minTemp: 0,
                 maxTemp:100,
                 condition: 'Cloudy',
                 description: action.payload.description
             });
+        },
+        editItem(state,action)
+        {
+            let currItems = state.items;
+            currItems[action.payload.id].name = action.payload.name;
+            currItems[action.payload.id].type = action.payload.type;
+            currItems[action.payload.id].color = action.payload.color;
+            currItems[action.payload.id].description = action.payload.description;
+            state.items = currItems;
         },
         deleteItem(state, action)
         {

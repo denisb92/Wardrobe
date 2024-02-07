@@ -6,16 +6,21 @@ export default function ItemsDetails(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const allItems = useSelector(state => state.dresser.items);
-    //const foundItem = allItems.filter((element) => element.id === params.itemId );
-    console.log( allItems[params.itemId-1]);
-    const {id, title, type, color, minTemp,maxTemp, condition, description  } = allItems[params.itemId];
-    const colorStr =  (color === 'white') ? 'text-black' : 'text-' + color + '-400';
+    const itemId = params.itemId;
+
+    const {name, type, color, minTemp,maxTemp, condition, description  } = allItems[params.itemId];
+
+    function editItem()
+    {
+        navigate('/clothes/edit/' + itemId);
+    }
+
     function deleteItem()
     {
         const proceed = window.confirm("Are you sure you want to delete Item: " + title);
         if(proceed)
         {
-            dispatch(dresserActions.deleteItem({id: id}));
+            dispatch(dresserActions.deleteItem({id: itemId}));
             navigate('..');
         }
     }
@@ -25,7 +30,7 @@ export default function ItemsDetails(){
         <div className='bg-white w-80 h-fit text-center font-serif font-bold flex-wrap grid border-2 border-black'>
             <h1 className="text-3xl text-stone-400">Item</h1>
             <p className='text-xl'>Name: </p>
-            <label className='text-blue-500'>{title}</label>
+            <label className='text-blue-500'>{name}</label>
             <p className='text-xl'>Type:</p>
             <label className='text-blue-500'>{type}</label>
 
@@ -39,7 +44,7 @@ export default function ItemsDetails(){
             <p>Description:</p>
             <label className='text-blue-500'> {description}</label>
             <div className='flex-wrap grid'>
-            <button className='py-4 text-green-400 hover:text-green-800' >Edit</button>
+            <button onClick={editItem} className='py-4 text-green-400 hover:text-green-800' >Edit</button>
             <button onClick={deleteItem}  className='text-red-400 hover:text-red-800'>Delete</button>
             </div>    
         </div>

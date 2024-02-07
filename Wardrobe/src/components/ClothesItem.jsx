@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
 export default function ClothesItem({temp, condition, type})
 {
+
     const clothesItems = useSelector(state => state.dresser.items);
-    const noClothes = {title: "NA", type: type, color: "NA", description: "NA"};
+    const noClothes = {name: "NA", type: type, color: "NA", description: "NA"};
     const specificClothes = clothesItems.filter((element) => element.type === type)// && element.minTemp <= temp &&
     // element.maxTemp >= temp && element.condition === condition);
      
@@ -23,7 +24,7 @@ export default function ClothesItem({temp, condition, type})
     return(
         <section className="justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded" >
             
-            <p>Item Name: {clothesItem.title}</p>
+            <p>Item Name: {clothesItem.name}</p>
             <p>Type: {clothesItem.type}</p>
             <p>Color: {clothesItem.color}</p>
             
