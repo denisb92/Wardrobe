@@ -3,7 +3,7 @@ export const DUMMY_DATA = [
     {
         id: 0,
         name: "Green Shirt",
-        type: "shirt",
+        type: "Shirt",
         color: "green",
         minTemp: 60,
         maxTemp: 95,
@@ -13,7 +13,7 @@ export const DUMMY_DATA = [
     {
         id: 1,
         name: "Fleece Sweater",
-        type: "shirt",
+        type: "Shirt",
         color: "blue",
         minTemp: 0,
         maxTemp: 50,
@@ -23,7 +23,7 @@ export const DUMMY_DATA = [
     {
         id: 2,
         name: "Chino Pants",
-        type: "pants",
+        type: "Pants",
         color: "red",
         minTemp: 0,
         maxTemp: 80,
@@ -33,7 +33,7 @@ export const DUMMY_DATA = [
     {
         id: 3,
         name: "Chukka Shoes",
-        type: "shoes",
+        type: "Shoes",
         color: "brown",
         minTemp: 0,
         maxTemp: 80,
@@ -43,7 +43,7 @@ export const DUMMY_DATA = [
     {
         id: 4,
         name: "Sneakers",
-        type: "shoes",
+        type: "Shoes",
         color: "white",
         minTemp: 0,
         maxTemp: 100,
@@ -53,7 +53,7 @@ export const DUMMY_DATA = [
     {
         id: 5,
         name: "Rain Jacket",
-        type: "jacket",
+        type: "Jacket",
         color: "yellow",
         minTemp: 0,
         maxTemp: 40,
@@ -63,7 +63,7 @@ export const DUMMY_DATA = [
     {
         id: 6,
         name: "Winter Jacket",
-        type: "jacket",
+        type: "Jacket",
         color: "gray",
         minTemp: 0,
         maxTemp: 40,
@@ -73,7 +73,7 @@ export const DUMMY_DATA = [
     {
         id: 7,
         name: "Jeans",
-        type: "pants",
+        type: "Pants",
         color: "blue",
         minTemp: 0,
         maxTemp: 100,

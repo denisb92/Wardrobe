@@ -10,7 +10,7 @@ const dresserSlice = createSlice({
         {
             state.clothesAmount++;
             state.items.push({
-                id: state.items.length + 1,
+                id: state.items.length,
                 name:  action.payload.name,
                 type: action.payload.type,
                 color: action.payload.color,

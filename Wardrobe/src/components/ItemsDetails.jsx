@@ -7,17 +7,16 @@ export default function ItemsDetails(){
     const navigate = useNavigate();
     const allItems = useSelector(state => state.dresser.items);
     const itemId = params.itemId;
-
-    const {name, type, color, minTemp,maxTemp, condition, description  } = allItems[params.itemId];
+    const {name, type, color, minTemp,maxTemp, condition, description  } = allItems[itemId];
 
     function editItem()
     {
-        navigate('/clothes/edit/' + itemId);
+        navigate('/closet/edit/' + itemId);
     }
 
     function deleteItem()
     {
-        const proceed = window.confirm("Are you sure you want to delete Item: " + title);
+        const proceed = window.confirm("Are you sure you want to delete Item: " + name);
         if(proceed)
         {
             dispatch(dresserActions.deleteItem({id: itemId}));

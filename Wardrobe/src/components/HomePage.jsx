@@ -8,10 +8,10 @@ export default function HomePage(){
     return(
         <section className="gap-2 w-1/4 grid grid-flow-row items-center">
             <Weather  />
-                {temp < 40 && <ClothesItem temp={temp} condition={condition} type="jacket" />}
-                <ClothesItem temp={temp} condition={condition} type="shirt" />
-                <ClothesItem temp={temp} condition={condition} type="pants"/>
-                 <ClothesItem temp={temp} condition={condition} type="shoes"/>
+                {temp < 40 && <ClothesItem temp={temp} condition={condition} type="Jacket" />}
+                <ClothesItem temp={temp} condition={condition} type="Shirt" />
+                <ClothesItem temp={temp} condition={condition} type="Pants"/>
+                 <ClothesItem temp={temp} condition={condition} type="Shoes"/>
                 
         </section>
     )
