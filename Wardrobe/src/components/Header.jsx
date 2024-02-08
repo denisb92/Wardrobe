@@ -9,7 +9,7 @@ export default function Header(){
                 <Link to="/" className=" text-white font-serif text-4xl">Dresser</Link>
                 </div>
                     <label><Link to="/add-item" className=" text-white font-serif">+ Add Item</Link></label>
-                    <button className=" text-white font-serif">Settings</button>
+                    <label><Link to="/settings" className=" text-white font-serif">Settings</Link></label>
                 
                     <label><Link to="/closet" className=" text-white font-serif">Closet</Link></label>
             </header>

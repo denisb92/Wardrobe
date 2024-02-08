@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { weatherActions } from './store/weather';
 import EditItemPage from './components/EditItem';
 import Closet from './components/Closet';
+import Settings from './components/Settings';
 
 function getWeatherInfo(){
     return new Promise((resolve) => {
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       {path: 'closet', element: <Closet/>},
       {path: 'closet/edit/:itemId', element: <EditItemPage/> },
       {path: 'closet/view/:itemId', element: <ItemsDetails/>},
+      {path: '/settings', element: <Settings/>}
     ]}
 ])
 
