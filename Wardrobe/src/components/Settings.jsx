@@ -14,7 +14,7 @@ export default function Settings(){
 
          for(let i = 0; i < allSettings.length; i++)
          {
-            newSettings.push({name: allSettings[i].name, minTemp: +fd.get(`${allSettings[i].name}min`), maxTemp: +fd.get(`${allSettings[i].name}max`)})
+            newSettings.push({name: allSettings[i].name, category: allSettings[i].category,  minTemp: +fd.get(`${allSettings[i].name}min`), maxTemp: +fd.get(`${allSettings[i].name}max`)})
          }
          dispatch(settingsActions.changeClothingSetting(
            {settings: newSettings}))

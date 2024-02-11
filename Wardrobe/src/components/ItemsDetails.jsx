@@ -7,7 +7,7 @@ export default function ItemsDetails(){
     const navigate = useNavigate();
     const allItems = useSelector(state => state.dresser.items);
     const itemId = params.itemId;
-    const {id, name, type, color, minTemp,maxTemp, condition, description  } = allItems[itemId];
+    const {id, name, type, color, condition, description  } = allItems[itemId];
 
     function editItem()
     {
@@ -35,9 +35,6 @@ export default function ItemsDetails(){
 
             <p className='text-2xl text-white'>Color: </p>
             <label className='text-lg'>{color}</label>
-
-            <p className='text-2xl text-white'>Temperature:</p>
-            <label className='text-lg'> {minTemp}° - {maxTemp}°</label>
             <p className='text-2xl text-white'>Condition: </p>
             <label className='text-lg'>{condition}</label>
             <p className='text-2xl text-white'>Description:</p>

@@ -1,23 +1,25 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
+import { checkWeather } from "./helper/WeatherLogic";
 export default function ClothesItem({temp, condition, type})
 {
-
     const clothesItems = useSelector(state => state.dresser.items);
+    const settings = useSelector(state => state.settings.settings);
+    const filteredItems = checkWeather(temp, settings, clothesItems, type);
     const noClothes = {name: "NA", type: type, color: "NA", description: "NA"};
-    const clothesCategory = clothesItems.filter((element) => element.type === type);
 
-    const clothesIndex = Math.floor(Math.random() * clothesCategory.length);
-    const [clothesItem, setClothesItem] = useState((clothesCategory.length === 0) ? noClothes : clothesCategory[clothesIndex]);
+    const clothesIndex = Math.floor(Math.random() * filteredItems.length);
+    const [clothesItem, setClothesItem] = useState((filteredItems.length === 0) ? noClothes : filteredItems[clothesIndex]);
     
     function generateRandomClothes()
     {
-        const newClothes = clothesCategory.filter((element) => element.id !== clothesItem.id);
-        if(newClothes.length !== 0)
+        const newFilteredItems = checkWeather(temp, settings, clothesItems, type);
+        const newFilteredItemsId =  newFilteredItems.filter((item) => item.id !== clothesItem.id);
+        if(newFilteredItemsId.length !== 0)
         {
-            const newClothesIndex = Math.floor(Math.random() * newClothes.length);
-            setClothesItem( newClothes[newClothesIndex] );
+            const newClothesIndex = Math.floor(Math.random() * newFilteredItemsId.length);
+            setClothesItem( newFilteredItemsId[newClothesIndex] );
         }
     }
     return(
@@ -28,7 +30,7 @@ export default function ClothesItem({temp, condition, type})
             <p className="text-lg">Color: {clothesItem.color}</p>
             
             <div className="flex items-start">
-                {clothesCategory.length > 1  && <button onClick={generateRandomClothes}  className="font-bold border-2 mx-10 w-24 h-8 bg-yellow-100 rounded border-black text-sm">Randomize</button>}
+                {filteredItems.length > 1  && <button onClick={generateRandomClothes}  className="font-bold border-2 mx-10 w-24 h-8 bg-yellow-100 rounded border-black text-sm">Randomize</button>}
                 {clothesItem !== noClothes && <Link to={`/closet/view/${clothesItem.id}`} className="font-bold mx-10 text-center border-2 w-24 h-8 bg-blue-100 rounded border-black text-sm">View Item</Link>}
             </div>
         </section>

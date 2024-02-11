@@ -14,8 +14,6 @@ const dresserSlice = createSlice({
                 name:  action.payload.name,
                 type: action.payload.type,
                 color: action.payload.color,
-                minTemp: 0,
-                maxTemp:100,
                 condition: 'Cloudy',
                 description: action.payload.description
             });

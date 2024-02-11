@@ -1,22 +1,50 @@
 export const DUMMY_SETTINGS = [
     {
-        name: 'Shirts',
-        minTemp: 40,
+        name: "T-Shirts",
+        category: "Top",
+        minTemp: 70,
         maxTemp: 100
     },
     {
-        name: 'Jackets',
+        name: "Long Sleeve Shirts",
+        category: "Top",
+        minTemp: 40,
+        maxTemp: 70
+    },
+    {
+        name: "Sweaters",
+        category: "Top",
         minTemp: 0,
         maxTemp: 40
     },
     {
-        name: 'Pants',
+        name: "Sweatshirts",
+        category: "Top",
+        minTemp: 30,
+        maxTemp: 65
+    },
+    {
+        name: "Jackets",
+        category: "Jacket",
+        minTemp: 0,
+        maxTemp: 40
+    },
+    {
+        name: "Pants",
+        category: "Bottom",
         minTemp: 0,
         maxTemp: 70,
     },
     {
-        name: 'Shoes',
+        name: "Shorts",
+        category: "Bottom",
+        minTemp: 70,
+        maxTemp: 100
+    },
+    {
+        name: "Shoes",
+        category: "Footwear",
         minTemp: 0,
-        maxTemp: 100   
-    }
+        maxTemp: 100
+    },
 ]
