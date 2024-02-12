@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
 import { checkWeather } from "./helper/WeatherLogic";
-export default function ClothesItem({temp, condition, type})
+import { getColor } from "./helper/ColorLogic";
+export default function ClothesItem({temp, condition, type, settings})
 {
     const clothesItems = useSelector(state => state.dresser.items);
-    const settings = useSelector(state => state.settings.settings);
     const filteredItems = checkWeather(temp, settings, clothesItems, type);
+    const [colorClass, setColorClass] = useState('');
     const noClothes = {name: "NA", type: type, color: "NA", description: "NA"};
-
     const clothesIndex = Math.floor(Math.random() * filteredItems.length);
     const [clothesItem, setClothesItem] = useState((filteredItems.length === 0) ? noClothes : filteredItems[clothesIndex]);
+
+    useEffect(() =>{
+        setColorClass(getColor(filteredItems[clothesIndex].color));
+    },[])
     
     function generateRandomClothes()
     {
@@ -19,11 +23,12 @@ export default function ClothesItem({temp, condition, type})
         if(newFilteredItemsId.length !== 0)
         {
             const newClothesIndex = Math.floor(Math.random() * newFilteredItemsId.length);
+            setColorClass(getColor(newFilteredItemsId[newClothesIndex].color))
             setClothesItem( newFilteredItemsId[newClothesIndex] );
         }
     }
     return(
-        <section className="justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded bg-gradient-to-tr from-stone-300 to-blue-400 shadow-2xl" >
+        <section className={`justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded bg-gradient-to-tr from-stone-300 to-${colorClass} shadow-2xl`} >
             
             <p className="text-xl text-white">Name: <label className="text-black">{clothesItem.name} </label></p>
             <p className="text-lg">Type: {clothesItem.type}</p>
