@@ -18,7 +18,7 @@ export default function Settings(){
          }
          dispatch(settingsActions.changeClothingSetting(
            {settings: newSettings}))
-         window.alert("Settings Updated!");
+         window.alert("Settings Updated! Generate new outfit!");
     }
 
     return(

@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 
-export default function Weather(){
-    const temp = useSelector(state => state.weather.tempF);
-    const condition = useSelector(state => state.weather.condition);
+export default function Weather({temp, condition}){
+    //const temp = useSelector(state => state.weather.tempF);
+    //const condition = useSelector(state => state.weather.condition);
   
     let conditionClass = "h-fit w-100 border-black border-2";
-    conditionClass += (condition === "Clear") ? " bg-gradient-to-r from-yellow-200 to-blue-100" : " bg-gradient-to-r from-blue-500 to-stone-300";
+    conditionClass += (condition === "Clear" || condition === "Sunny") ? " bg-gradient-to-r from-yellow-200 to-blue-100" : " bg-gradient-to-r from-blue-500 to-stone-300";
 
     return(
        <section className= {conditionClass} >

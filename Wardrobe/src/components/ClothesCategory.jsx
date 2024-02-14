@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { dresserActions } from "../store/dresser-clother";
+import { getColor } from "./helper/ColorLogic";
 export default function ClothesCategory({clothesType})
 {
     const [showCategory, setShowCategory] = useState(true);
@@ -28,7 +29,7 @@ export default function ClothesCategory({clothesType})
     return(     <section className="py-2">
                 <button className={categoryStyle} onClick={toggleHide}>{clothesType} </button>
                 {showCategory && categoryItems.map((item) =>(
-                  <section key={item.id} className="justify-items-start  font-semibold font-serif text-black bg-white px-2 my-2 grid border-black h-36 border-2 rounded bg-gradient-to-r from-white to-slate-300" >
+                  <section key={item.id} className={`justify-items-start  font-semibold font-serif text-black bg-white px-2 my-2 grid border-black h-36 border-2 rounded bg-gradient-to-tr from-stone-300 to-${getColor(item.color)}`} >
             
                 <p className="text-xl">Name: {item.name}</p>
                 <p className="text-lg">Type: {item.type}</p>

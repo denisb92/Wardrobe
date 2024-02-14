@@ -90,5 +90,50 @@ export const DUMMY_DATA = [
         condition: 'Sunny',
         description: "Henley from Old Navy"
     },
+    {
+        id: 10,
+        name: "Hoodie",
+        type: "Sweatshirts",
+        category: "Top",
+        color: "Black",
+        condition: 'Sunny',
+        description: "Hoodie from Walmart"
+    },
+    {
+        id: 11,
+        name: "Loafers",
+        type: "Shoes",
+        category: "Footwear",
+        color: "Brown",
+        condition: 'Sunny',
+        description: "Loafers from Mens Warehouse"
+    },
+    {
+        id: 12,
+        name: "Polo",
+        type: "T-Shirts",
+        category: "Top",
+        color: "Purple",
+        condition: 'Sunny',
+        description: "Polo from H&M"
+    },
+    {
+        id: 13,
+        name: "Gym Hoodie",
+        type: "Sweatshirts",
+        category: "Top",
+        color: "Red",
+        condition: 'Sunny',
+        description: "Hoodie from GymShark"
+    },
+    {
+        id: 14,
+        name: "Gym Shorts",
+        type: "Shorts",
+        category: "Bottom",
+        color: "Black",
+        condition: 'Sunny',
+        description: "Shorts From Nike"
+    },
 
 ]
