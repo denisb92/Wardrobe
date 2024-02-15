@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { COLORS, TYPES } from "../data/data";
+import { COLORS, OCCASION, OCCASIONSET, TYPES } from "../data/data";
 import {useDispatch} from 'react-redux';
 import { dresserActions } from "../store/dresser-clother";
 import { useRef } from "react";
@@ -32,10 +32,10 @@ export default function ItemForm({method, item})
 
 
     return(
-        <form  ref={formElement} onSubmit={handleAddedItem}>
+        <form ref={formElement} onSubmit={handleAddedItem}>
             <div className="grid justify-center my-10">
             <h1 className="font-mono font-bold text-4xl mx-32">{method} Item</h1>
-            <section className="rounded border-2 bg-gradient-to-tr from-white to-blue-300 h-96 border-black my-10 w-auto shadow-2xl">
+            <section className="rounded border-2 bg-gradient-to-tr from-white to-blue-300 h-fit py-2 border-black my-10 w-auto shadow-2xl">
                 <div className="p-5">
                     <label className="px-4 font-bold text-lg" >Name:</label>
                     <input className="bg-blue-100 border-2 text-black border-black px-1" name="name" id="name" required defaultValue={item ? item.name : ''} />
@@ -45,6 +45,15 @@ export default function ItemForm({method, item})
                     <select className="w-40 bg-blue-100 border-2 text-black border-black" name="type" id="type" defaultValue={item ? item.type : ''}>
                         {TYPES.map((type) => (
                             <option key={type} value={type} >{type}</option>
+                        )
+                        )}
+                    </select>
+                </div>
+                <div className="p-5">
+                <label className="px-4 font-bold text-lg" >Occasion:</label>
+                    <select className="w-40 bg-blue-100 border-2 text-black border-black" name="occasion" id="occasion" defaultValue={item ? item.occasion : ''}>
+                        {OCCASIONSET.map((occasion) => (
+                            <option key={occasion} value={occasion} >{occasion}</option>
                         )
                         )}
                     </select>

@@ -33,7 +33,7 @@ export function colorFilter(items, color)
 export function getStyleClass(color)
 {
     const colorStr = getColor(color);
-    let stringStyle = `justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-36 border-2 rounded shadow-2xl bg-gradient-to-tr from-stone-300 to-${colorStr}`;
+    let stringStyle = `justify-items-start  font-semibold font-serif text-black bg-white px-2 grid border-black h-fit border-2 rounded shadow-2xl bg-gradient-to-tr from-stone-300 to-${colorStr}`;
     return stringStyle;
 
     switch(color)

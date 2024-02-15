@@ -10,14 +10,14 @@ export default function Weather({temp, condition}){
     return(
        <section className= {conditionClass} >
             <div className="flex justify-center">
-                <h1 className="text-stone-700 font-bold font-mono text-xl">Weather Info</h1>
+                <h1 className="text-stone-700 font-bold font-mono text-lg">Weather Info</h1>
             </div>
             <div className="grid justify-center my-2" >
                 <label className="font-bold font-serif">Temperature </label>
                 
-                <p className="font-bold text-center text-lg">{temp.toFixed(0)}°</p>
+                <p className="font-bold text-center text-md">{temp.toFixed(0)}°</p>
                 <label className="font-bold font-serif">Condition</label>
-                <p className="font-bold text-center text-lg">{condition}</p>
+                <p className="font-bold text-center text-md">{condition}</p>
 
                 
             </div>

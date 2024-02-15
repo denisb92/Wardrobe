@@ -7,7 +7,7 @@ export default function ItemsDetails(){
     const navigate = useNavigate();
     const allItems = useSelector(state => state.dresser.items);
     const itemId = params.itemId;
-    const {id, name, type, color, condition, description  } = allItems[itemId];
+    const {id, name, type, occasion, color, condition, description  } = allItems[itemId];
 
     function editItem()
     {
@@ -32,7 +32,8 @@ export default function ItemsDetails(){
             <label className='text-lg'>{name}</label>
             <p className='text-2xl text-white'>Type:</p>
             <label className='text-lg'>{type}</label>
-
+            <p className='text-2xl text-white'>Occasion:</p>
+            <label className='text-lg'>{occasion}</label>
             <p className='text-2xl text-white'>Color: </p>
             <label className='text-lg'>{color}</label>
             <p className='text-2xl text-white'>Condition: </p>

@@ -13,6 +13,7 @@ const dresserSlice = createSlice({
                 id: state.items.length,
                 name:  action.payload.name,
                 type: action.payload.type,
+                occasion: action.payload.occasion,
                 color: action.payload.color,
                 condition: 'Cloudy',
                 description: action.payload.description
@@ -23,6 +24,7 @@ const dresserSlice = createSlice({
             let currItems = state.items;
             currItems[action.payload.id].name = action.payload.name;
             currItems[action.payload.id].type = action.payload.type;
+            currItems[action.payload.id].occasion = action.payload.occasion;
             currItems[action.payload.id].color = action.payload.color;
             currItems[action.payload.id].description = action.payload.description;
             state.items = currItems;

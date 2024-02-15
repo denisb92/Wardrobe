@@ -26,13 +26,13 @@ export default function ClothesItem({ type, outfit, randomizeOneClothing})
         {clothesItem !== null &&
         <section className= {classStyle}>
             
-            <p className="text-xl text-white">Name: <label className="text-black">{clothesItem.name} </label></p>
-            <p className="text-lg">Type: {clothesItem.type}</p>
-            <p className="text-lg">Color: {clothesItem.color}</p>
+            <p className="text-lg text-white">Name: <label className="text-black">{clothesItem.name} </label></p>
+            <p className="text-md">Type: {clothesItem.type}</p>
+            <p className="text-md">Color: {clothesItem.color}</p>
             
             <div className="flex items-start">
-                <button onClick={generateRandomClothes}  className="font-bold border-2 mx-10 w-24 h-8 bg-yellow-100 rounded border-black text-sm">Randomize</button>
-                {clothesItem.type !== 'N/A' && <Link to={`/closet/view/${clothesItem.id}`} className="font-bold mx-10 text-center border-2 w-24 h-8 bg-blue-100 rounded border-black text-sm">View Item</Link>}
+                <button onClick={generateRandomClothes}  className="font-bold border-2 mx-10 w-24 h-fit bg-yellow-100 rounded border-black text-sm my-2">Randomize</button>
+                {clothesItem.type !== 'N/A' && <Link to={`/closet/view/${clothesItem.id}`} className="font-bold mx-10 text-center border-2 w-24 h-fit my-2 bg-blue-100 rounded border-black text-sm">View Item</Link>}
             </div>
         </section>}
         </>
