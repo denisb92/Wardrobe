@@ -2,15 +2,17 @@ import { NOCLOTHES } from "../../data/data";
 import { colorFilter } from "./ColorLogic";
 import { checkWeather } from "./WeatherLogic";
 
-export function checkValidOutfit(outfit)
+export const INVALID_OUTFIT = {Jacket: NOCLOTHES, Top: NOCLOTHES, Bottom: NOCLOTHES, Footwear: NOCLOTHES};
+
+function checkValidItem(item)
 {
-    return outfit.Top !== NOCLOTHES && outfit.Bottom !== NOCLOTHES && outfit.Footwear !== NOCLOTHES;
+    return item !== NOCLOTHES;
 }
 
 export function randomizeOneClothingFunc(outfit, type, id, temp, settings, items, occasion)
 {
-    const occasionFiltered = items.filter((items) => items.occasion === occasion || items.occasion === 'Any');
-    const filterItems = checkWeather(temp, settings, occasionFiltered, type);
+    const occasionFiltered = items.filter((item) => (item.occasion === occasion || item.occasion === 'Any') && item.category === type);
+    const filterItems = checkWeather(temp, settings, occasionFiltered);
     let filterItemsColor = filterItems;
     if(type !== 'Jacket')
         filterItemsColor = colorFilter(filterItems, (type === 'Bottom') ? outfit['Top'].color : outfit['Bottom'].color );
@@ -19,12 +21,13 @@ export function randomizeOneClothingFunc(outfit, type, id, temp, settings, items
     return  idFilter[newClothingIdx];
 }
 
-function randomizeHelperFunc(temp, settings, items, type, prevCategoryColor)
+function randomizeHelperFunc(items, type, prevCategoryColor)
 {
-    const filteredItems = checkWeather(temp, settings, items, type);
-    let colorFiltered = filteredItems;
+    let colorFiltered = items.filter((item) => item.category === type);
     if(prevCategoryColor !== null)
         colorFiltered = colorFilter(colorFiltered, prevCategoryColor);
+    if(colorFiltered.length === 0)
+        return NOCLOTHES;
     const clothesIndex = Math.floor(Math.random() * colorFiltered.length);
     const initialClothes = (colorFiltered[clothesIndex] === undefined || colorFiltered.length === 0) ? NOCLOTHES : colorFiltered[clothesIndex];
     return initialClothes;
@@ -33,18 +36,21 @@ function randomizeHelperFunc(temp, settings, items, type, prevCategoryColor)
 export function randomizeOutfitFunc(temp,settings, items , isJacketWeather, occasion)
 {
          const occasionFiltered = items.filter((items) => items.occasion === occasion || items.occasion === 'Any');
+         const weatherFiltered = checkWeather(temp, settings, occasionFiltered);
+         console.log(weatherFiltered);
          let initialClothesJacket;
          if(isJacketWeather)
          {
-            initialClothesJacket = randomizeHelperFunc(temp, settings, occasionFiltered, 'Jacket', null);
-         
+            initialClothesJacket = randomizeHelperFunc( weatherFiltered, 'Jacket', null);
          }
-         const initialClothesTop = randomizeHelperFunc(temp, settings, occasionFiltered, 'Top', null);
-         const initialClothesBottom = randomizeHelperFunc(temp, settings, occasionFiltered, 'Bottom', initialClothesTop.color);
-         if(initialClothesBottom === NOCLOTHES)
-         {
-            return {Jacket: initialClothesJacket, Top: initialClothesTop, Bottom: NOCLOTHES, Footwear: NOCLOTHES};
-         }
-         const initialClothesFootwear = randomizeHelperFunc(temp, settings, occasionFiltered, 'Footwear', initialClothesBottom.color);
+         const initialClothesTop = randomizeHelperFunc(weatherFiltered, 'Top', null);
+         if(!checkValidItem(initialClothesTop)) return INVALID_OUTFIT;
+        
+         const initialClothesBottom = randomizeHelperFunc(weatherFiltered, 'Bottom', initialClothesTop.color);
+         if(!checkValidItem(initialClothesBottom)) return INVALID_OUTFIT;
+       
+         const initialClothesFootwear = randomizeHelperFunc( weatherFiltered, 'Footwear', initialClothesBottom.color);
+         if(!checkValidItem(initialClothesFootwear)) return INVALID_OUTFIT;
+     
         return {Jacket: initialClothesJacket, Top: initialClothesTop, Bottom: initialClothesBottom, Footwear: initialClothesFootwear};
 }

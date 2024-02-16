@@ -1,23 +1,17 @@
 
 
-export function checkWeather(temp, settings, items, type)
+export function checkWeather(temp, settings, items)
 {
-        const allSettings = settings.filter((setting) => setting.category === type );
-        let allItems =[];
+        const allSettings = settings.filter((setting) => setting.minTemp <= temp && temp <= setting.maxTemp );
+        let allWeatherItems = [];
         allSettings.forEach((setting) =>{
-            if(setting.minTemp <= temp && temp <= setting.maxTemp)
-            {
-                const singleClothesCategory = items.filter((item) =>
-                    item.type === setting.name
-                )
-
-                singleClothesCategory.forEach((item) =>
-                    allItems.push(item)
-                )
             
-            }
+                 items.forEach((item) =>{
+                    if(item.type === setting.name)
+                        allWeatherItems.push(item);
+                 }
+                )
         })
-        
-        return allItems;
+        return allWeatherItems;
     
 }

@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DUMMY_DATA } from "../data/DUMMY_DATA";
+import { NOCLOTHES } from "../data/data";
 
-const intialDresserState = {items: DUMMY_DATA, clothesAmount: 8, currentOutfit:{ Jacket: null, Top: null , Bottom:null , Footwear: null} };
+const INITIAL_CLOTHES = { Jacket: NOCLOTHES, Top: NOCLOTHES , Bottom:NOCLOTHES , Footwear: NOCLOTHES};
+const ALL_CLOTHES_INITIAL = [{Casual: INITIAL_CLOTHES}, {Work: INITIAL_CLOTHES}, {Workout: INITIAL_CLOTHES},{Formal: INITIAL_CLOTHES},  ];
+
+const intialDresserState = {items: DUMMY_DATA, clothesAmount: 8, allOutfits: ALL_CLOTHES_INITIAL };
 const dresserSlice = createSlice({
     name: 'dresser',
     initialState: intialDresserState,
@@ -44,11 +48,11 @@ const dresserSlice = createSlice({
         },
         setCurrentOutfit(state, action)
         {
-            state.currentOutfit = action.payload.outfit;
+            state.allOutfits[action.payload.indx] = action.payload.outfit;
         },
         setNewClothing(state, action)
         {
-            state.currentOutfit[action.payload.type] = action.payload.clothingItem;
+            state.allOutfits[action.payload.indx][action.payload.type] = action.payload.clothingItem;
         }
     }
 })
