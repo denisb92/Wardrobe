@@ -37,7 +37,6 @@ export function randomizeOutfitFunc(temp,settings, items , isJacketWeather, occa
 {
          const occasionFiltered = items.filter((items) => items.occasion === occasion || items.occasion === 'Any');
          const weatherFiltered = checkWeather(temp, settings, occasionFiltered);
-         console.log(weatherFiltered);
          let initialClothesJacket;
          if(isJacketWeather)
          {
@@ -53,4 +52,16 @@ export function randomizeOutfitFunc(temp,settings, items , isJacketWeather, occa
          if(!checkValidItem(initialClothesFootwear)) return INVALID_OUTFIT;
      
         return {Jacket: initialClothesJacket, Top: initialClothesTop, Bottom: initialClothesBottom, Footwear: initialClothesFootwear};
+}
+
+export function getCategory(type)
+{
+    if(type === 'T-Shirts' || type === 'Long Sleeve Shirts' || type === 'Sweaters' || type === 'Sweatshirts')
+        return "Top";
+    else if(type === 'Pants' || type === 'Shorts')
+        return "Bottom";
+    else if(type === 'Shoes')
+        return "Footwear";
+    else
+        return "Jacket";
 }

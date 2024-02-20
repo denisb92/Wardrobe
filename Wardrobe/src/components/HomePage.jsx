@@ -25,15 +25,17 @@ export default function HomePage(){
     useEffect(() =>{
         if(outfit.Top === undefined)
         {
-            const firstGeneratedOutfit = randomizeOutfitFunc(temp,settings, items, isJacketWeather, 'Casual');
+            const firstGeneratedOutfit = randomizeOutfitFunc(temp,settings, items, isJacketWeather, occasionDropDown.current.value);
             if(firstGeneratedOutfit !== INVALID_OUTFIT)
             {
                 dispatch(dresserActions.setCurrentOutfit({outfit:firstGeneratedOutfit, indx: 0}));
+                setOutfit(firstGeneratedOutfit);
+                setIsInvalidOutfit(false);
             }
         }
         else
             setIsInvalidOutfit(false);
-    },[])
+    },[allOutfits])
 
     function checkIfValidOutfit(newOutfit)
     {

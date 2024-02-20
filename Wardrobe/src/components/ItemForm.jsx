@@ -38,7 +38,7 @@ export default function ItemForm({method, item})
             <section className="rounded border-2 bg-gradient-to-tr from-white to-blue-300 h-fit py-2 border-black my-10 w-auto shadow-2xl">
                 <div className="p-5">
                     <label className="px-4 font-bold text-lg" >Name:</label>
-                    <input className="bg-blue-100 border-2 text-black border-black px-1" name="name" id="name" required defaultValue={item ? item.name : ''} />
+                    <input className="bg-blue-100 border-2 text-black border-black px-1" name="name" id="name" required defaultValue={item ? item.name : ''} maxLength={25} />
                 </div>
                 <div className="p-5">
                 <label className="px-4 font-bold text-lg" >Type:</label>

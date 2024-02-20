@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { dresserActions } from "../store/dresser-clother";
 import { getColor } from "./helper/ColorLogic";
-export default function ClothesCategory({clothesType})
+export default function ClothesCategory({allItems, clothesType, toggleDeleteModalFunc})
 {
     const [showCategory, setShowCategory] = useState(true);
-    const allItems = useSelector(state => state.dresser.items);
 
-    const categoryItems = allItems.filter((item) => item.type == clothesType);
-    const dispatch = useDispatch();
+    const categoryItems = allItems.filter((item) => item.type === clothesType);
     let categoryStyle = (showCategory) ? "text-4xl font-serif font-bold hover:text-white" : "text-4xl font-serif text-stone-400 font-bold hover:text-white"
 
     function toggleHide()
@@ -17,15 +13,6 @@ export default function ClothesCategory({clothesType})
         setShowCategory(!showCategory);
     }
 
-    function deleteItem(itemId, name)
-    {
-        const proceed = window.confirm("Are you sure you want to delete Item: " + name);
-        if(proceed)
-        {
-            dispatch(dresserActions.deleteItem({id: itemId}));
-            
-        }
-    }
     return(     <section className="py-2">
                 <button className={categoryStyle} onClick={toggleHide}>{clothesType} </button>
                 {showCategory && categoryItems.map((item) =>(
@@ -38,7 +25,7 @@ export default function ClothesCategory({clothesType})
                   <div className="flex items-start">
                       
                       <Link to={`/closet/view/${item.id}`} className="font-bold mx-10 text-center border-2 w-24 h-8 bg-blue-100 rounded border-black text-sm">View Item</Link>
-                      <button onClick={() => deleteItem(item.id, item.name)} className="font-bold mx-10 text-center border-2 w-24 h-8 bg-red-500 rounded border-black text-sm">Delete</button>
+                      <button onClick={() => toggleDeleteModalFunc(item.id, item.name, item.category, item.occasion)} className="font-bold mx-10 text-center border-2 w-24 h-8 bg-red-500 rounded border-black text-sm">Delete</button>
                   </div>
               </section>
                 ))}

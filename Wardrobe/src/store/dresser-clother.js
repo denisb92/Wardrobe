@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DUMMY_DATA } from "../data/DUMMY_DATA";
-import { NOCLOTHES } from "../data/data";
+import { NOCLOTHES, OCCASION_TO_INDEX } from "../data/data";
+import { getCategory } from "../components/helper/OutfitLogic";
 
-const INITIAL_CLOTHES = { Jacket: NOCLOTHES, Top: NOCLOTHES , Bottom:NOCLOTHES , Footwear: NOCLOTHES};
-const ALL_CLOTHES_INITIAL = [{Casual: INITIAL_CLOTHES}, {Work: INITIAL_CLOTHES}, {Workout: INITIAL_CLOTHES},{Formal: INITIAL_CLOTHES},  ];
+const INITIAL_CLOTHES = { Jacket: undefined, Top: undefined , Bottom:undefined , Footwear: undefined};
+const ALL_CLOTHES_INITIAL = [INITIAL_CLOTHES, INITIAL_CLOTHES, INITIAL_CLOTHES,INITIAL_CLOTHES,  ];
 
 const intialDresserState = {items: DUMMY_DATA, clothesAmount: 8, allOutfits: ALL_CLOTHES_INITIAL };
+
 const dresserSlice = createSlice({
     name: 'dresser',
     initialState: intialDresserState,
@@ -17,6 +19,7 @@ const dresserSlice = createSlice({
                 id: state.items.length,
                 name:  action.payload.name,
                 type: action.payload.type,
+                category: getCategory(action.payload.type),
                 occasion: action.payload.occasion,
                 color: action.payload.color,
                 condition: 'Cloudy',
@@ -28,6 +31,7 @@ const dresserSlice = createSlice({
             let currItems = state.items;
             currItems[action.payload.id].name = action.payload.name;
             currItems[action.payload.id].type = action.payload.type;
+            currItems[action.payload.id].category = getCategory(action.payload.type);
             currItems[action.payload.id].occasion = action.payload.occasion;
             currItems[action.payload.id].color = action.payload.color;
             currItems[action.payload.id].description = action.payload.description;
@@ -45,6 +49,12 @@ const dresserSlice = createSlice({
                 item.id = id;
                 id++;
             })
+            const occasionIndex = OCCASION_TO_INDEX[action.payload.occasion];
+            const currentOutfit = state.allOutfits[occasionIndex];
+            if(currentOutfit[action.payload.category] !== undefined && currentOutfit[action.payload.category].id === action.payload.id)
+            {
+                state.allOutfits[occasionIndex] = INITIAL_CLOTHES;
+            }
         },
         setCurrentOutfit(state, action)
         {
