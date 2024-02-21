@@ -231,7 +231,7 @@ export const DUMMY_DATA = [
         description: "Compression Pants From Nike"
     },
     {
-        id: 22,
+        id: 23,
         name: "Black Dress Shoes",
         type: "Shoes",
         category: "Footwear",
@@ -241,7 +241,7 @@ export const DUMMY_DATA = [
         description: "Black Dress Shoes"
     },
     {
-        id: 23,
+        id: 24,
         name: "Black Crocs",
         type: "Shoes",
         category: "Footwear",
@@ -251,7 +251,7 @@ export const DUMMY_DATA = [
         description: "Black Crocs"
     },
     {
-        id: 24,
+        id: 25,
         name: "Leather Sneakers",
         type: "Shoes",
         category: "Footwear",
@@ -261,7 +261,7 @@ export const DUMMY_DATA = [
         description: "Black Leather Sneakers"
     },
     {
-        id: 25,
+        id: 26,
         name: "Adidas Sneakers",
         type: "Shoes",
         category: "Footwear",

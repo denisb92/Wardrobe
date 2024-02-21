@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import { dresserActions } from '../store/dresser-clother';
 import { useState } from 'react';
 import Modal from './DeleteItemModal';
+import DeleteModal from './DeleteItemModal';
 export default function ItemsDetails(){
     const params = useParams();
     const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export default function ItemsDetails(){
 
     return(
         <>
-        <Modal open={modalIsOpen} name={name} onDelete={deleteItem} onCancel={onCancel} />
+        <DeleteModal open={modalIsOpen} name={name} onDelete={deleteItem} onCancel={onCancel} />
         <h1 className="text-4xl font-serif font-bold py-2 text-center">Item</h1>
         <div className='bg-gradient-to-tr from-stone-300 to-blue-400 w-80 h-fit text-center font-serif font-bold flex-wrap grid border-2 border-black shadow-2xl '>
             <p className='text-2xl text-white'>Name: </p>

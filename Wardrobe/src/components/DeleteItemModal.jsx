@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import '../index.css'
-export default function Modal({open, name, onDelete, onCancel})
+export default function DeleteModal({open, name, onDelete, onCancel})
 {
     const dialog = useRef();
     useEffect(() =>{
