@@ -33,7 +33,7 @@ export const DUMMY_SETTINGS = [
         name: "Pants",
         category: "Bottom",
         minTemp: 0,
-        maxTemp: 70,
+        maxTemp: 100,
     },
     {
         name: "Shorts",
@@ -48,3 +48,5 @@ export const DUMMY_SETTINGS = [
         maxTemp: 100
     },
 ]
+
+export const DUMMY_ITEMS_TO_WEAR = ["T-Shirts", "Long Sleeve Shirts", "Pants", "Shorts", "Shoes" ]

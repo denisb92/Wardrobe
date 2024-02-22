@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
-import {Outlet, Link} from 'react-router-dom'
+import {Outlet, Link, NavLink} from 'react-router-dom'
 
+let currentSelectedStyle = "text-yellow-300 font-serif"
+let notCurrentSelectedStyle = "text-white font-serif"
 export default function Header(){
     return(
         <>
@@ -8,10 +10,10 @@ export default function Header(){
             <div>
                 <Link to="/" className=" text-white font-serif text-4xl">Dresser</Link>
                 </div>
-                    <label><Link to="/add-item" className=" text-white font-serif">+ Add Item</Link></label>
-                    <label><Link to="/settings" className=" text-white font-serif">Settings</Link></label>
+                    <label><NavLink to="/add-item" className={({isActive}) => isActive ? currentSelectedStyle : notCurrentSelectedStyle} end>+ Add Item</NavLink></label>
+                    <label><NavLink to="/settings" className={({isActive}) => isActive ? currentSelectedStyle : notCurrentSelectedStyle} end>Settings</NavLink></label>
                 
-                    <label><Link to="/closet" className=" text-white font-serif">Closet</Link></label>
+                    <label><NavLink to="/closet" className={({isActive}) => isActive ? currentSelectedStyle : notCurrentSelectedStyle} end>Closet</NavLink></label>
             </header>
             <div className='py-2 grid justify-center'>
             <Outlet/>
