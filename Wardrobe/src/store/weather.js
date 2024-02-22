@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialWeather = {tempF: 0, condition: "Clear"};
+const initialWeather = {tempF: 70, condition: "Clear"};
 
 const weatherSlice = createSlice({
     name: 'weather',
