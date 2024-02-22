@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DUMMY_DATA } from "../data/DUMMY_DATA";
-import { NOCLOTHES, OCCASION_TO_INDEX } from "../data/data";
+import { CATEGORIES, OCCASION_TO_INDEX } from "../data/data";
 import { getCategory } from "../components/helper/OutfitLogic";
 
 const INITIAL_CLOTHES = { Jacket: undefined, Top: undefined , Bottom:undefined , Footwear: undefined};
@@ -63,6 +63,18 @@ const dresserSlice = createSlice({
         setNewClothing(state, action)
         {
             state.allOutfits[action.payload.indx][action.payload.type] = action.payload.clothingItem;
+        },
+        checkOutfit(state, action)
+        {
+            for(let i = 0; i < state.allOutfits.length; i++)
+            {
+                CATEGORIES.forEach((category) => {
+                    if(state.allOutfits[i][category] !== undefined && action.payload.availableTypes.find((available) => available !== state.allOutfits[i][category].type ))
+                    {
+                        state.allOutfits[i] = ALL_CLOTHES_INITIAL;
+                    }
+                })
+            }
         }
     }
 })

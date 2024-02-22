@@ -1,11 +1,15 @@
+import { dresserActions } from "../store/dresser-clother";
 import { settingsActions } from "../store/settings";
 import RangeDials from "./RangeDials";
 import { useDispatch, useSelector } from "react-redux";
+import { checkAvailableOutfitTypes } from "./helper/WeatherLogic";
 
 export default function Settings(){
 
     const allSettings = useSelector(state => state.settings.settings);
+    const currentTemp = useSelector(state => state.weather.tempF);
     const dispatch = useDispatch();
+
     function handleUpdate(event)
     {
         event.preventDefault();
@@ -16,9 +20,13 @@ export default function Settings(){
          {
             newSettings.push({name: allSettings[i].name, category: allSettings[i].category,  minTemp: +fd.get(`${allSettings[i].name}min`), maxTemp: +fd.get(`${allSettings[i].name}max`)})
          }
+
+         const newAvailableTypes = checkAvailableOutfitTypes(newSettings, currentTemp);
          dispatch(settingsActions.changeClothingSetting(
-           {settings: newSettings}))
+           {settings: newSettings, newAvailableTypes}))
+
          window.alert("Settings Updated! Generate new outfit!");
+         dispatch(dresserActions.checkOutfit({availableTypes: newAvailableTypes}))
     }
 
     return(

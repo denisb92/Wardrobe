@@ -6,8 +6,7 @@ import { dresserActions } from "../store/dresser-clother";
 import { useEffect, useRef, useState } from "react";
 import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from "./helper/OutfitLogic";
 export default function HomePage(){
-    const settings = useSelector(state => state.settings.settings);
-    const jacketSetting = settings.filter((setting) => setting.category === 'Jacket');
+    const availableTypesToUse = useSelector(state => state.settings.availableTypesToWear)
     const items = useSelector(state => state.dresser.items);
     //const tempCases = [{temp: 70, condition: "Sunny"}, {temp: 20, condition: "Sunny"}, {temp: 100, condition: "Rainy"}, {temp: 20, condition: "Rainy"} ];
     //const indx = Math.floor(Math.random() * tempCases.length);
@@ -20,12 +19,11 @@ export default function HomePage(){
     const [outfit, setOutfit] = useState(allOutfits[0]);
     let temp = 70;
     let condition = "Clear";
-    const isJacketWeather = jacketSetting[0].minTemp <= temp && jacketSetting[0].maxTemp >= temp
     
     useEffect(() =>{
         if(outfit.Top === undefined)
         {
-            const firstGeneratedOutfit = randomizeOutfitFunc(temp,settings, items, isJacketWeather, occasionDropDown.current.value);
+            const firstGeneratedOutfit = randomizeOutfitFunc(availableTypesToUse, items, occasionDropDown.current.value);
             if(firstGeneratedOutfit !== INVALID_OUTFIT)
             {
                 dispatch(dresserActions.setCurrentOutfit({outfit:firstGeneratedOutfit, indx: 0}));
@@ -52,14 +50,14 @@ export default function HomePage(){
 
     function randomizeOutfit()
     {
-        const newOutfit = randomizeOutfitFunc(temp, settings, items ,isJacketWeather, occasionDropDown.current.value);
+        const newOutfit = randomizeOutfitFunc(availableTypesToUse, items, occasionDropDown.current.value);
         checkIfValidOutfit(newOutfit);
     }
 
     function randomizeOneClothing(type)
     {
         const indx = OCCASION_TO_INDEX[occasionDropDown.current.value];
-        const newClothing = randomizeOneClothingFunc(outfit, type, allOutfits[indx][type].id, temp, settings, items, occasionDropDown.current.value);
+        const newClothing = randomizeOneClothingFunc(outfit, type, allOutfits[indx][type].id, availableTypesToUse, items, occasionDropDown.current.value);
         if(newClothing !== undefined)
         {
             dispatch(dresserActions.setNewClothing({type, clothingItem:newClothing, indx:indx}));
@@ -90,7 +88,7 @@ export default function HomePage(){
             ))}
             </select>
             {!isInvalidOutfit && <>
-            {isJacketWeather && <ClothesItem temp={temp} condition={condition} type="Jacket"  outfit={outfit['Jacket']} randomizeOneClothing={randomizeOneClothing} />}
+            {availableTypesToUse.find((type) => type === "Jackets") && <ClothesItem temp={temp} condition={condition} type="Jacket"  outfit={outfit['Jacket']} randomizeOneClothing={randomizeOneClothing} />}
                 {CATEGORIES.map((category) =>(
                   <ClothesItem key={category} temp={temp} condition={condition} type={category}  outfit={outfit[category]} randomizeOneClothing={randomizeOneClothing} />
                 ))}
