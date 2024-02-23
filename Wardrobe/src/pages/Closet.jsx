@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { dresserActions } from "../store/dresser-clother";
 import DeleteModal from "../components/DeleteItemModal";
 import FilterModal from "../components/FilterModal";
-import { getFilteredItems } from "../components/helper/FilterLogic";
+import { getFilteredItems } from "../helper/FilterLogic";
 export default function Closet()
 {
     const allItems = useSelector(state => state.dresser.items);

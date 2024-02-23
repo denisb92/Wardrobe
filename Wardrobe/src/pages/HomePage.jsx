@@ -4,7 +4,8 @@ import Weather from "../components/Weather"
 import { CATEGORIES, OCCASION, OCCASION_TO_INDEX } from "../data/data";
 import { dresserActions } from "../store/dresser-clother";
 import { useEffect, useRef, useState } from "react";
-import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from "../components/helper/OutfitLogic";
+import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from '../helper/OutfitLogic';
+
 export default function HomePage(){
     const availableTypesToUse = useSelector(state => state.settings.availableTypesToWear)
     const items = useSelector(state => state.dresser.items);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
-import {  getStyleClass } from "./helper/ColorLogic";
+import { getStyleClass } from "../helper/ColorLogic";
 
 export default function ClothesItem({ type, outfit, randomizeOneClothing})
 {

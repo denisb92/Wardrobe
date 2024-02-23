@@ -1,5 +1,4 @@
-import { COLOR_CODEX } from "../../data/data";
-
+import { COLOR_CODEX } from "../data/data";
 export function getColor(colorCoded)
 {
     let newString = '';

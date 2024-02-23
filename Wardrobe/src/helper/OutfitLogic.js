@@ -1,4 +1,4 @@
-import { NOCLOTHES } from "../../data/data";
+import { NOCLOTHES } from "../data/data";
 import { colorFilter } from "./ColorLogic";
 import { checkWeather } from "./WeatherLogic";
 

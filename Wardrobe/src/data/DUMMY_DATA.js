@@ -270,5 +270,15 @@ export const DUMMY_DATA = [
         condition: 'Sunny',
         description: "Red Sneakers From Adidas"
     },
+    {
+        id: 27,
+        name: "Nike Sneakers",
+        type: "Shoes",
+        category: "Footwear",
+        occasion: 'Casual',
+        color: "Black",
+        condition: 'Sunny',
+        description: "Black Sneaker From Nike"
+    },
 
 ]

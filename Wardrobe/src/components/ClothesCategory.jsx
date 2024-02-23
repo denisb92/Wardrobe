@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getColor } from "./helper/ColorLogic";
+import { getColor } from "../helper/ColorLogic";
 export default function ClothesCategory({allItems, clothesType, toggleDeleteModalFunc})
 {
     const [showCategory, setShowCategory] = useState(true);

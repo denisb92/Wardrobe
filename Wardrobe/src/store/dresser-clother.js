@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DUMMY_DATA } from "../data/DUMMY_DATA";
 import { CATEGORIES, OCCASION_TO_INDEX } from "../data/data";
-import { getCategory } from "../components/helper/OutfitLogic";
+import { getCategory } from "../helper/OutfitLogic";
 
 const INITIAL_CLOTHES = { Jacket: undefined, Top: undefined , Bottom:undefined , Footwear: undefined};
 const ALL_CLOTHES_INITIAL = [INITIAL_CLOTHES, INITIAL_CLOTHES, INITIAL_CLOTHES,INITIAL_CLOTHES,  ];
