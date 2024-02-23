@@ -1,16 +1,16 @@
 
 import AddItem from './components/AddItem';
 import Header from './components/Header';
-import HomePage from './components/HomePage';
+import HomePage from './pages/HomePage';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
-import ItemsDetails from './components/ItemsDetails';
+import ItemsDetails from './pages/ItemsDetails';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { weatherActions } from './store/weather';
 import EditItemPage from './components/EditItem';
-import Closet from './components/Closet';
-import Settings from './components/Settings';
+import Closet from './pages/Closet';
+import Settings from './pages/Settings';
 
 function getWeatherInfo(){
     return new Promise((resolve) => {

@@ -1,11 +1,11 @@
-import ClothesCategory from "./ClothesCategory";
+import ClothesCategory from "../components/ClothesCategory";
 import { TYPES } from "../data/data";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dresserActions } from "../store/dresser-clother";
-import DeleteModal from "./DeleteItemModal";
-import FilterModal from "./FilterModal";
-import { getFilteredItems } from "./helper/FilterLogic";
+import DeleteModal from "../components/DeleteItemModal";
+import FilterModal from "../components/FilterModal";
+import { getFilteredItems } from "../components/helper/FilterLogic";
 export default function Closet()
 {
     const allItems = useSelector(state => state.dresser.items);

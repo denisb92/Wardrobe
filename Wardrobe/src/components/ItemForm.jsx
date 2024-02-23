@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { COLORS, OCCASION, OCCASIONSET, TYPES } from "../data/data";
+import { COLORS, OCCASIONSET, TYPES } from "../data/data";
 import {useDispatch} from 'react-redux';
 import { dresserActions } from "../store/dresser-clother";
 import { useRef } from "react";
@@ -34,7 +34,7 @@ export default function ItemForm({method, item})
     return(
         <form ref={formElement} onSubmit={handleAddedItem}>
             <div className="grid justify-center my-10">
-            <h1 className="font-mono font-bold text-4xl mx-32">{method} Item</h1>
+            <h1 className="text-7xl font-serif text-stone-700 text-center">{method} Item</h1>
             <section className="rounded border-2 bg-gradient-to-tr from-white to-blue-300 h-fit py-2 border-black my-10 w-auto shadow-2xl">
                 <div className="p-5">
                     <label className="px-4 font-bold text-lg" >Name:</label>

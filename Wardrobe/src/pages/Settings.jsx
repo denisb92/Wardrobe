@@ -1,8 +1,8 @@
 import { dresserActions } from "../store/dresser-clother";
 import { settingsActions } from "../store/settings";
-import RangeDials from "./RangeDials";
+import RangeDials from "../components/RangeDials";
 import { useDispatch, useSelector } from "react-redux";
-import { checkAvailableOutfitTypes } from "./helper/WeatherLogic";
+import { checkAvailableOutfitTypes } from "../components/helper/WeatherLogic";
 import { useState } from "react";
 import { SETTINGS_FILTER } from "../data/FilterSettings";
 

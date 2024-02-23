@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate, useParams} from 'react-router-dom'
 import { dresserActions } from '../store/dresser-clother';
 import { useState } from 'react';
-import Modal from './DeleteItemModal';
-import DeleteModal from './DeleteItemModal';
+import Modal from '../components/DeleteItemModal';
+import DeleteModal from '../components/DeleteItemModal';
 export default function ItemsDetails(){
     const params = useParams();
     const dispatch = useDispatch();

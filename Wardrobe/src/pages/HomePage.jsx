@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import ClothesItem from "./ClothesItem"
-import Weather from "./Weather"
+import ClothesItem from "../components/ClothesItem"
+import Weather from "../components/Weather"
 import { CATEGORIES, OCCASION, OCCASION_TO_INDEX } from "../data/data";
 import { dresserActions } from "../store/dresser-clother";
 import { useEffect, useRef, useState } from "react";
-import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from "./helper/OutfitLogic";
+import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from "../components/helper/OutfitLogic";
 export default function HomePage(){
     const availableTypesToUse = useSelector(state => state.settings.availableTypesToWear)
     const items = useSelector(state => state.dresser.items);
@@ -78,7 +78,7 @@ export default function HomePage(){
             setIsInvalidOutfit(false);
         }
     }
-
+    
     return(
         <section className="gap-2 w-fit grid grid-flow-row items-center">
             <Weather temp={temp} condition={condition}  />
