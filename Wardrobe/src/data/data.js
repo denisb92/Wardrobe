@@ -15,6 +15,6 @@ export const COLOR_CODEX = {Red: ['Black', 'Blue',' Pink', 'White','Purple', 'Ye
                     Gray: ['Yellow', 'Blue', 'Pink', 'Black', 'Green', 'Gray', 'Red', 'Orange', 'White'],
                     Pink: ['White', 'Pink', 'Orange', 'Blue', 'Gray', 'Black', 'Brown', 'Red'],
                     Orange:['Pink', 'Purple', 'Black', 'Brown', 'White', 'Yellow', 'Blue'],
-                    Purple:['Black', 'Pink', 'Gray', 'Yellow', 'Brown'],
+                    Purple:['Black', 'Pink', 'Gray', 'Yellow', 'Brown', 'Red'],
                     Brown: ['White', 'Blue', 'Yellow', 'Pink', 'Orange', 'Purple'],
                 };

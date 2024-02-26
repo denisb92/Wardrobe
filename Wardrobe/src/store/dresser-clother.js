@@ -29,13 +29,17 @@ const dresserSlice = createSlice({
         editItem(state,action)
         {
             let currItems = state.items;
-            currItems[action.payload.id].name = action.payload.name;
-            currItems[action.payload.id].type = action.payload.type;
-            currItems[action.payload.id].category = getCategory(action.payload.type);
-            currItems[action.payload.id].occasion = action.payload.occasion;
-            currItems[action.payload.id].color = action.payload.color;
-            currItems[action.payload.id].description = action.payload.description;
+            const payloadId = action.payload.id;
+            const currItem = currItems[payloadId];
+            const indx = OCCASION_TO_INDEX[currItem.occasion];
+            if(state.allOutfits[indx][currItem.category] !== undefined && state.allOutfits[indx][currItem.category].id === payloadId)
+                state.allOutfits[indx] = ALL_CLOTHES_INITIAL;
+
+            currItems[payloadId] = action.payload;
+            currItems[payloadId].condition = "Sunny";
+            currItems[payloadId].category = action.payload.category;
             state.items = currItems;
+
         },
         deleteItem(state, action)
         {
