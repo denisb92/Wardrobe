@@ -6,6 +6,7 @@ import { dresserActions } from "../store/dresser-clother";
 import { useEffect, useRef, useState } from "react";
 import { INVALID_OUTFIT, randomizeOneClothingFunc, randomizeOutfitFunc } from '../helper/OutfitLogic';
 
+
 export default function HomePage(){
     const availableTypesToUse = useSelector(state => state.settings.availableTypesToWear)
     const items = useSelector(state => state.dresser.items);
@@ -17,12 +18,15 @@ export default function HomePage(){
     const occasionDropDown = useRef()
 
     const allOutfits = useSelector(state => state.dresser.allOutfits);
-    const [outfit, setOutfit] = useState(allOutfits[0]);
-    let temp = 70;
-    let condition = "Clear";
-    
+    const [outfit, setOutfit] = useState((allOutfits === undefined) ? undefined : allOutfits[0]);
+    //let temp = 70;
+    //let condition = "Clear";
+    const temp = useSelector(state => state.weather.tempF)
+    const condition = useSelector(state => state.weather.condition);
+
+
     useEffect(() =>{
-        if(outfit.Top === undefined)
+        if(allOutfits[0].Top === undefined)
         {
             const firstGeneratedOutfit = randomizeOutfitFunc(availableTypesToUse, items, occasionDropDown.current.value);
             if(firstGeneratedOutfit !== INVALID_OUTFIT)

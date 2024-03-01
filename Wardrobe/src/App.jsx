@@ -11,14 +11,14 @@ import { weatherActions } from './store/weather';
 import EditItemPage from './components/EditItem';
 import Closet from './pages/Closet';
 import Settings from './pages/Settings';
+import { fetchItemData } from './store/dresser-db-actions';
+import { fetchSettingsData } from './store/settings-db-actions';
 
 function getWeatherInfo(){
     return new Promise((resolve) => {
       navigator.geolocation.getCurrentPosition((position) => {
         //const current = GetWeatherInfo(position.coords.latitude, position.coords.longitude);
         resolve(current);
-        
-  
       });
     })
   }
@@ -47,11 +47,14 @@ function App() {
   useEffect(() => {
     async function getWeather()
     {
-      const current = await getWeatherInfo();
-      dispatch(weatherActions.setWeatherInfo({tempF: current.temperature2m, condition: current.precipation}));
+      //const current = await getWeatherInfo();
+      //dispatch(weatherActions.setWeatherInfo({tempF: current.temperature2m, condition: current.precipation}));
+      dispatch(weatherActions.setWeatherInfo({tempF: 70, condition: 'Sunny'}));
+      dispatch(fetchSettingsData(70));
     }
     getWeather();
-  }, []);
+    dispatch(fetchItemData());
+  },[]);
 
   return (
     <RouterProvider router={router} />

@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DUMMY_ITEMS_TO_WEAR, DUMMY_SETTINGS } from "../data/DUMMY_SETTINGS";
 
-const initialSettings = {settings: DUMMY_SETTINGS, availableTypesToWear: DUMMY_ITEMS_TO_WEAR };
+const initialSettings = {settings: [], availableTypesToWear: []};
 
 const settingsSlice = createSlice({
     name: 'settings',

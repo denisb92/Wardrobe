@@ -1,6 +1,6 @@
 import ClothesCategory from "../components/ClothesCategory";
 import { TYPES } from "../data/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dresserActions } from "../store/dresser-clother";
 import DeleteModal from "../components/DeleteItemModal";
@@ -15,10 +15,23 @@ export default function Closet()
         category: '',
         occasion: ''
     }
+
+    const initialFormData = {
+        Occasion: "None",
+        Type: "None",
+        Color: "None",
+        Category: "None"
+    };
+
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
     const [itemInfo, setItemInfo] = useState(initalItemInfo);
     const [filteredItems, setFilterItems] = useState(allItems);
+    const [formDataState, setFormDataState] = useState(initialFormData);
+
+    useEffect(() =>{
+        applyFilterToCloset(formDataState);
+    }, [allItems])
 
     const dispatch = useDispatch();
     function toggleDeleteModal(id, name, category, occasion)
@@ -40,6 +53,7 @@ export default function Closet()
 
     function applyFilterToCloset(formData)
     {
+        setFormDataState(formData);
         const newFiltered = getFilteredItems(formData.Occasion, formData.Type, formData.Color, formData.Category, allItems);
         setFilterItems(newFiltered);
         setFilterModalIsOpen(false);

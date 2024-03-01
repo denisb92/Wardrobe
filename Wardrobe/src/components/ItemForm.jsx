@@ -1,32 +1,35 @@
 import { useNavigate } from "react-router-dom";
 import { COLORS, OCCASIONSET, TYPES } from "../data/data";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { dresserActions } from "../store/dresser-clother";
 import { useRef } from "react";
 import { getCategory } from "../helper/OutfitLogic";
 export default function ItemForm({method, item})
 {
+
     const formElement = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const allItems = useSelector(state => state.dresser.items);
+
     function handleAddedItem(event)
     {
         event.preventDefault();
         const fd = new FormData(event.target);
         const data = Object.fromEntries(fd.entries());
+        data.category = getCategory(data.type);
+        data.condition = "Sunny";
         
         if(method == 'Edit')
         {
             data.id = item.id;
-            data.category = getCategory(data.type);
             dispatch(dresserActions.editItem(data));
             navigate('..');
         }
         else{
-
+            data.id = allItems.length;
             dispatch(dresserActions.addItem(data));
         }
-
         formElement.current.reset();
         
 

@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DUMMY_DATA } from "../data/DUMMY_DATA";
 import { CATEGORIES, OCCASION_TO_INDEX } from "../data/data";
-import { getCategory } from "../helper/OutfitLogic";
+import { sendItemData } from "./dresser-db-actions";
 
 const INITIAL_CLOTHES = { Jacket: undefined, Top: undefined , Bottom:undefined , Footwear: undefined};
 const ALL_CLOTHES_INITIAL = [INITIAL_CLOTHES, INITIAL_CLOTHES, INITIAL_CLOTHES,INITIAL_CLOTHES,  ];
 
-const intialDresserState = {items: DUMMY_DATA, clothesAmount: 8, allOutfits: ALL_CLOTHES_INITIAL };
+const intialDresserState = {items: [], clothesAmount: 8, allOutfits: ALL_CLOTHES_INITIAL };
 
 const dresserSlice = createSlice({
     name: 'dresser',
@@ -15,16 +14,8 @@ const dresserSlice = createSlice({
         addItem(state,action )
         {
             state.clothesAmount++;
-            state.items.push({
-                id: state.items.length,
-                name:  action.payload.name,
-                type: action.payload.type,
-                category: getCategory(action.payload.type),
-                occasion: action.payload.occasion,
-                color: action.payload.color,
-                condition: 'Cloudy',
-                description: action.payload.description
-            });
+            state.items.push(action.payload);
+            sendItemData({items: state.items});
         },
         editItem(state,action)
         {
@@ -36,9 +27,8 @@ const dresserSlice = createSlice({
                 state.allOutfits[indx] = ALL_CLOTHES_INITIAL;
 
             currItems[payloadId] = action.payload;
-            currItems[payloadId].condition = "Sunny";
-            currItems[payloadId].category = action.payload.category;
             state.items = currItems;
+            sendItemData({items: state.items});
 
         },
         deleteItem(state, action)
@@ -47,7 +37,7 @@ const dresserSlice = createSlice({
             state.items = state.items.filter((item) =>
                 item.id !== action.payload.id
             );
-
+            sendItemData({items: state.items});
             let id = 0;
             state.items.forEach((item) => {
                 item.id = id;
@@ -59,6 +49,10 @@ const dresserSlice = createSlice({
             {
                 state.allOutfits[occasionIndex] = INITIAL_CLOTHES;
             }
+        },
+        setAllItems(state, action)
+        {
+            state.items = action.payload.items;
         },
         setCurrentOutfit(state, action)
         {

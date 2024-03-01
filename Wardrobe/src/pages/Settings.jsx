@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkAvailableOutfitTypes } from "../helper/WeatherLogic";
 import { useState } from "react";
 import { SETTINGS_FILTER } from "../data/FilterSettings";
+import { sendSettingsData } from "../store/settings-db-actions";
 
 const RESET_CHECKED_STATE = {
    "All": false,
@@ -52,6 +53,7 @@ export default function Settings(){
            {settings: newSettings, newAvailableTypes}))
 
          window.alert("Settings Updated! Generate new outfit!");
+         sendSettingsData({settings: newSettings});
          dispatch(dresserActions.checkOutfit({availableTypes: newAvailableTypes}))
     }
 

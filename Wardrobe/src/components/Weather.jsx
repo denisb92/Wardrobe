@@ -1,9 +1,4 @@
-import { useSelector } from "react-redux";
-
 export default function Weather({temp, condition}){
-    //const temp = useSelector(state => state.weather.tempF);
-    //const condition = useSelector(state => state.weather.condition);
-  
     let conditionClass = "h-fit w-100 border-black border-2";
     conditionClass += (condition === "Clear" || condition === "Sunny") ? " bg-gradient-to-r from-yellow-200 to-blue-100" : " bg-gradient-to-r from-blue-500 to-stone-300";
 
@@ -15,7 +10,7 @@ export default function Weather({temp, condition}){
             <div className="grid justify-center my-2" >
                 <label className="font-bold font-serif">Temperature </label>
                 
-                <p className="font-bold text-center text-md">{temp.toFixed(0)}°</p>
+                <p className="font-bold text-center text-md">{temp === undefined ? "Error" : temp.toFixed(0)}°</p>
                 <label className="font-bold font-serif">Condition</label>
                 <p className="font-bold text-center text-md">{condition}</p>
 

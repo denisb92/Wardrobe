@@ -67,6 +67,9 @@ export function getStyleClass(color)
         case "Gray":
             stringStyle += 'to-slate-300';
             break;
+        case "Orange":
+            stringStyle += 'to-orange-300';
+            break;
     }
     return stringStyle;
 }
